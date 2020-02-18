@@ -20,9 +20,14 @@ function changeVocals (str) {
     return hasil
 }
   
-  function reverseWord (str) {
-    //code di sini
-  }
+function reverseWord (str) {
+    var hasil = ''
+    for (var i = str.length-1; i >= 0; i--) {
+        hasil += str[i]
+    }
+
+    return hasil
+}
   
   function setLowerUpperCase (str) {
     //code di sini
@@ -37,6 +42,7 @@ function changeVocals (str) {
   }
 
   console.log(changeVocals('Sergei Dragunov'))
+  console.log(reverseWord('Sergei Dragunov'))
   
 //   console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
 //   console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
