@@ -68,16 +68,20 @@ function removeSpaces (str) {
     return hasil
 }
   
-  function passwordGenerator (name) {
-    //code di sini
-  }
+function passwordGenerator (name) {
+    if (name.length < 5) {
+        return 'Minimal karakter yang diinputkan adalah 5 karakter'
+    }
+    
+    var vocal = changeVocals(name)
+    var reverse = reverseWord(vocal)
+    var lowUp = setLowerUpperCase(reverse)
+    var hasil = removeSpaces(lowUp)
 
-  console.log(changeVocals('Sergei Dragunov'))
-  console.log(reverseWord('Sergei Dragunov'))
-  console.log(setLowerUpperCase('Sergei Dragunov'))
-  console.log(removeSpaces('Sergei Dragunov'))
+    return hasil
+}
   
-//   console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
-//   console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
-//   console.log(passwordGenerator('Alexei')); // 'JFXFLb'
-//   console.log(passwordGenerator('Alex')); // 'Minimal karakter yang diinputkan adalah 5 karakter'
+  console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
+  console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
+  console.log(passwordGenerator('Alexei')); // 'JFXFLb'
+  console.log(passwordGenerator('Alex')); // 'Minimal karakter yang diinputkan adalah 5 karakter'
