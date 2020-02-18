@@ -29,13 +29,44 @@ function reverseWord (str) {
     return hasil
 }
   
-  function setLowerUpperCase (str) {
-    //code di sini
-  }
+function setLowerUpperCase (str) {
+    var hasil = ''
+    var besar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var kecil = 'abcdefghijklmnopqrstuvwxyz'
+
+    for (var i = 0; i < str.length; i++) {
+        
+        for (var j = 0; j < besar.length; j++) {
+            if (str[i] == besar[j]) {
+                hasil += kecil[j]
+            }
+        }
+
+        for (var k = 0; k < kecil.length; k++) {
+            if (str[i] == kecil[k]) {
+                hasil += besar[k]
+            }
+        }
+
+        if (str[i] === ' ') {
+            hasil += str[i]
+        }
+    }
+
+    return hasil
+}
   
-  function removeSpaces (str) {
-    //code di sini
-  }
+function removeSpaces (str) {
+    var hasil = ''
+
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] !== ' ') {
+            hasil += str[i]
+        }
+    }
+
+    return hasil
+}
   
   function passwordGenerator (name) {
     //code di sini
@@ -43,6 +74,8 @@ function reverseWord (str) {
 
   console.log(changeVocals('Sergei Dragunov'))
   console.log(reverseWord('Sergei Dragunov'))
+  console.log(setLowerUpperCase('Sergei Dragunov'))
+  console.log(removeSpaces('Sergei Dragunov'))
   
 //   console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
 //   console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
