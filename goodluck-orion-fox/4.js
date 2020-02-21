@@ -6,10 +6,45 @@ function ini akan mencari teman yang memiliki nomer indonesia dan gendernya laki
 
 Rules: 
  Dilarang menggunakan built-in function selain .push()
+
+ waktu 11 menit 19 detik
 */
 
 function getTeman(data, template) {
-    // your code here..
+    var hasil = []
+    var dataArr = []
+    ///simpan di array dulu
+    for (var i = 0; i < data.length; i++) {
+        var temp = ''
+        dataArr[i] = []
+
+        for (var j = 0; j <= data[i].length; j++) {
+            if (data[i][j] === ',' || j == data[i].length) {
+                dataArr[i].push(temp)
+                temp = ''
+            }
+            else {
+                temp += data[i][j]
+            }
+        }
+    }
+
+    ///saring dataArr
+    for (var a = 0; a < dataArr.length; a++) {
+        var kodeNegara = dataArr[a][3][0] + dataArr[a][3][1] + dataArr[a][3][2]
+
+        if (kodeNegara === '+62' || dataArr[a][2] === 'Male') {
+            var obj = {
+                fullName : `${dataArr[a][0]} ${dataArr[a][1]}`,
+                gender : `${dataArr[a][2]}`,
+                phone : `${dataArr[a][3]}`
+            }
+
+            hasil.push(obj)
+        }
+    }
+    
+    return hasil
 }
 
 const datas = [
