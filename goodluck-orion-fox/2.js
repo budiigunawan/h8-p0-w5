@@ -12,7 +12,14 @@ Proses :
 */
 
 function interleave(data) {
-    // your code here
+    var hasil = []
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < data.length; j++) {
+            hasil.push(data[j][i])
+        }
+    }
+
+    return hasil
 }
 
 console.log(interleave([[1, 2, 3], ["c", "d", "e"]]))
