@@ -10,6 +10,7 @@ Proses :
     ⭣['c', 'd', 'e']
     Setelah itu pindah ke kolom sebelahnya dst.
 */
+///waktu 8 menit 18 detik
 
 function interleave(data) {
     var hasil = []
