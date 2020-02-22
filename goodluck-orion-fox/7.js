@@ -10,8 +10,8 @@ yang menggroupkan movies berdasarkan tahunnya dan data movie sudah di sorting be
 Rules :
 Dilang menggunakan built-in function selain .push() 
 
+Waktu pengerjaan 20 menit 10 detik
 */
-
 
 /* Function converstionTime akan mengubah value waktu dalam kumpulan array menjadi waktu format menit
 Ouput array 2D:
@@ -22,7 +22,12 @@ Ouput array 2D:
 ]
 */
 function converstionTime(list) {
-    // your code here..
+    for (var i = 0; i < list.length; i++) {
+        var minute = Number(list[i][2][0]) * 60 + Number(list[i][2][2]) * 10 + Number(list[i][2][3]) * 1
+        list[i][2] = minute
+    }
+
+    return cartoons
 }
 
 /* Function sortByRating akan mengurutkan movies berdasarkan ratingnya secara descanding
@@ -35,9 +40,18 @@ ouput berupa array of array
 ] 
 */
 function sortByRating(list) {
-    // your code here..
-}
+    for (var a = 1; a < list.length; a++) {
+        for (var b = 0; b < a; b++) {
+            if (list[a][0] > list[b][0]) {
+                var tukar = list[a]
+                list[a] = list[b]
+                list[b] = tukar
+            }
+        }
+    }
 
+    return list
+}
 
 /*Function groupByYear akan menggelompokkan data movies berdasarkan tahunnyanya
 Ouput berupa object dengan keyname tahun dan value dari tahun adalah array of objects
@@ -45,12 +59,47 @@ format object untuk permovienya
 {name : '<name>', time: '<time in minute> minutes', rating : '<rating>/10'}
 */
 function groupByYear(arr) {
-    // your code here..
+    var hasil = {}
+
+    for (var i = 0; i < arr.length; i++) {
+        if (hasil[arr[i][3]] == undefined) {
+            hasil[arr[i][3]] = []
+        }
+
+        var obj = {
+            name : arr[i][1],
+            time : arr[i][2],
+            rating : `${arr[i][0]}/10`
+        }
+
+        hasil[arr[i][3]].push(obj)
+    }
+
+    return hasil
 }
 
 
+/*
+{
+    '2013': [
+        { name: 'Anna & Eli', time: '150 minutes', rating: '10/10' },
+        { name: 'Hungry Bird', time: '120 minutes', rating: '6/10' }
+    ],
+    '2015': [
+        { name: 'Avatar Eng', time: '90 minutes', rating: '8/10' },
+        { name: 'Megomind', time: '75 minutes', rating: '5/10' },
+        { name: 'Zoopio', time: '80 minutes', rating: '5/10' }
+    ],
+    '2020': [
+        { name: 'Lion Kong', time: '80 minutes', rating: '9/10' },
+        { name: 'Sonyc', time: '130 minutes', rating: '6/10' }
+    ]
+}
+*/
+
 /* Function getListMovies akan memberikan data movies yang sudah di arrage tahun dan rating, 
     dan sudah mengkonfersi waktu pada data movie berupa menit. */
+
 function getListMovies(movie) {
     return groupByYear(sortByRating(converstionTime(movie)))
 }
